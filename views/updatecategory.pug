@@ -1,0 +1,38 @@
+extends base
+block content 
+    .container-fluid
+        .row
+            .col-sm-12.col-md-6.col-lg-6.bg-secondary
+                form.px-2.upd-cat-form
+                    .form-group.text-white
+                        label(for='catupd1') Category Name
+                        input#catupd1.form-control(type='text' name='catname' required='' value=`${catdata.catname}`)
+                    .form-group.text-white
+                        label(for='catupd2') Category Description
+                        textarea#catupd2.form-control(rows='5' type='text' name='catdesc' required='')=`${catdata.catdes}`  
+                    .form-group.text-white
+                        label(for='catupd3')
+                        select#catupd3.form-control(name='catstatus')
+                            if `${catdata.parentstatus}`==='primary category'
+                              option Please select a option
+                            else 
+                              option=`${catdata.parentstatus}`
+                              option Please select a option
+                            each el in catalldata
+                              if `${el.parentstatus}`=='primary category'
+                                option=`${el.catname}` 
+                    .form-group.my-3.text-white
+                        button.btn.btn-primary.upd-btn(data-upd=`${catdata._id}`) Update Category
+            .col-sm-12.col-md-6.col-lg-6.bg-secondary
+                table.table.px-3.text-white
+                    thead
+                        tr
+                            th(scope='col') SN
+                            th(scope='col') Category Name
+                            th(scope='col') Parents Status
+                    tbody
+                        each el,i in catalldata
+                            tr
+                                th=`${i+1}`
+                                td=`${el.catname}`
+                                td=`${el.parentstatus}`

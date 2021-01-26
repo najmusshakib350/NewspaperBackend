@@ -1,0 +1,33 @@
+extends base
+block content 
+  .container-fluid.text-center.alltable
+    .postdelform(data-catid=`${delcatid}`)
+        if `${delcatid}`==''
+            .emptytext 
+        else
+            button.btn.btn-primary.text-white.delpcat.my-3 Confirm Delete
+        
+    table.table.table-dark
+        thead
+            tr
+                th(scope='col') SN
+                th(scope='col') Thumnail
+                th(scope='col') Title
+                th(scope='col') Category Name
+                th(scope='col') Author Name
+                th(scope='col') Tags
+                th(scope='col') Action
+        tbody
+            each el,i in postall
+                tr
+                    th 1
+                    td
+                      img.thumimg(src=`/image/postthumnail/${el.thumbnail}` alt='Poor connection')
+                    td=`${el.post_title}`
+                    td=`${el.category_name}`
+                    td=`${el.author_name}`
+                    td=`${el.tags}`
+                    td
+                        a.text-white.px-1(href=`/updatepost/${el._id}`) Upd
+                        a.text-white.px-1(href=`/viewallpost?delid=${el._id}`) Del
+

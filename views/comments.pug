@@ -1,0 +1,28 @@
+extends base
+block content 
+  .container-fluid.alltable
+    .row.text-center
+        .col-12
+            .commentsdelform(data-commid=`${delcommid}`)
+                if `${delcommid}`==''
+                    .emptytext 
+                else
+                    button.btn.btn-primary.text-white.delpcat.my-3 Confirm Delete
+                
+            table.table.table-dark
+                thead
+                    tr
+                        th(scope='col') SL
+                        th(scope='col') Description
+                        th(scope='col') Category
+                        th(scope='col') User
+                        th(scope='col') Action
+                tbody
+                    each el,i in commentsdata
+                      tr
+                        th=`${i+1}`
+                        td=`${el.comdesc}`
+                        td=`${el.categoryid.catname}`
+                        td=`${el.userid.name}`
+                        td
+                           a.text-white.px-1(href=`/allcomments?delid=${el._id}`) Del

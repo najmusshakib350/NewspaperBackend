@@ -1,0 +1,103 @@
+/* universal css */
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    margin:0;
+    padding:0;
+}
+
+/* header css start */
+header .row{
+    --bs-gutter-x: 0 rem;
+}
+.newslogo{
+    height:50px;
+    width:100px;
+    
+}
+/* header css end */
+/* site navbar start */
+.Menuesitebar .row{
+    --bs-gutter-x: 0 rem;
+}
+.Menuesitebar .pdiv{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.Menuesitebar .userp{
+   padding:25px 0;
+}
+
+.Menuesitebar span{
+    color:#fff;
+}
+.Menuesitebar img{
+    width:50px;
+    height: 50px;
+    border-radius: 30px;
+}
+.Menuesitebar .pdiv{
+    background-color:#222;
+}
+.Menuesitebar .pul{
+    padding-left:10px;
+    margin-bottom:0;
+}
+.Menuesitebar .belownavp{
+    color:#222;
+}
+.Menuesitebar h3{
+    color:#fff;
+}
+.Menuesitebar p{
+    color:#fff;
+}
+.Menuesitebar ul{
+    list-style: none;
+}
+.Menuesitebar a{
+    text-decoration: none;
+}
+.catitemdel{
+    text-align:center;
+}
+.thumimg{
+    width:50px !important;
+    height:50px !important;
+    border-radius:0 !important;
+}
+.loginrow{
+    height:100vh;
+    position:relative;
+}
+.login-form{
+    border: 2px solid #ccc;
+    padding: 10px
+}
+.login-main-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.logout{
+    cursor: pointer;
+}
+.errorpar{
+    position: relative;
+    width:100%;
+    height:100vh;
+}
+.errorpar h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.alltable{
+    overflow-x:scroll;
+}
+/* site navbar end */

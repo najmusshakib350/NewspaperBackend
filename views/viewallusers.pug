@@ -1,0 +1,37 @@
+extends base
+block content  
+ .container-fluid.text-center.alltable
+      .userdelform(data-catid=`${delcatid}`)
+        if `${delcatid}`==''
+            .emptytext 
+        else
+            button.btn.btn-primary.text-white.delpcat.my-3 Confirm Delete
+            
+      table.table.table-dark
+          thead
+              tr
+                  th(scope='col') SN
+                  th(scope='col') Name
+                  th(scope='col') Email
+                  th(scope='col') Phone
+                  th(scope='col') Address
+                  th(scope='col') Image
+                  th(scope='col') Role
+                  th(scope='col') Status
+                  th(scope='col') Action
+          tbody
+            each el,i in allusers
+              tr
+                  td=`${i+1}` 
+                  td=`${el.name}`
+                  td=`${el.email}`
+                  td=`${el.phone}`
+                  td=`${el.address}`
+                  td
+                    img.thumimg(src=`/image/users/${el.profilepicture}` alt='Poor connection')
+                  td=`${el.userrole}`
+                  td=`${el.userstatus}`
+                  td
+                      a.text-white.px-1(href=`/updateuserdata/${el._id}`) Upd
+                      a.text-white.px-1(href=`/viewallusers?delid=${el._id}`) Del
+

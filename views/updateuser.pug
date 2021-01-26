@@ -1,0 +1,31 @@
+extends base
+block content
+    .py-3.bg-secondary
+        form.row.updateuser
+            .col-sm-12.col-md-6.col-lg-6.px-3
+                .form-group.text-white
+                    label(for='useradd1') User Name
+                    input#useradd1.form-control(type='text' value=`${userinfo.name}`)
+                .form-group.text-white
+                    label(for='useradd2') User Email
+                    input#useradd2.form-control(type='email' value=`${userinfo.email}`)
+                .form-group.text-white
+                    label(for='useradd5') Phone Number
+                    input#useradd5.form-control(type='text' value=`${userinfo.phone}`)
+            .col-sm-12.col-md-6.col-lg-6.px-3
+                .form-group.text-white
+                    label(for='useradd6') Address
+                    input#useradd6.form-control(type='text' value=`${userinfo.address}`)
+                .form-group.text-white
+                    label(for='useradd7') User Role
+                    select#useradd7.form-control
+                        option=`${userinfo.userrole}`
+                        option Please select a option
+                        option Admin
+                        option Editor
+                        option User
+                .form-group.text-white
+                    label(for='useradd8') Profile Picture
+                    input#useradd8.form-control(type='file' accept='image/*')
+                .form-group.py-3
+                    button.btn.btn-primary.upd-post-btn(data-upd=`${userinfo._id}`) Update Confirm

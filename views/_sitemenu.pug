@@ -1,0 +1,45 @@
+section.Menuesitebar
+    .row
+        .col-sm-12.col-md-4.col-lg-2.px-0
+            .pdiv
+                ul.pul
+                    li.userp
+                      if user
+                         img(src=`/image/users/${user.profilepicture}` alt='User Picture')
+                         span=`${user.name}`
+                      else
+                         img(src='/image/users/johndoe.png' alt='User Picture')
+                         span John Doe
+                    li
+                        a(href="/")
+                          h3 Dashboard
+                    li
+                        p Blog Functionality
+                        ul
+                            li
+                                p Category
+                            li
+                                a.nav-link.text-white(href='/viewcategory') Manage Category
+                            li
+                                p Post
+                            li
+                                a.nav-link.text-white(href='/viewallpost') Manage All Post
+                            li
+                                a.nav-link.text-white(href='/addpost/') Add New Post
+                            li
+                                p Comments
+                            li
+                                a.nav-link.text-white(href='/allcomments/') All Comments
+                    li
+                        p Plateform Settings
+                        ul
+                            li
+                                p All Users
+                            li
+                                a.nav-link.text-white(href='/viewallusers/') Manage All Users
+                            li
+                                a.nav-link.text-white(href='/newsbd/userregistration/') Add Users
+        .col-sm-12.col-md-8.col-lg-10.px-0
+            p 
+
+
