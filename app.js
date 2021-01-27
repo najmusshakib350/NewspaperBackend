@@ -6,7 +6,7 @@ const ratelimit=require('express-rate-limit');
 const helmet=require('helmet');
 const mongosanitize =require('express-mongo-sanitize');
 const xss=require('xss-clean');
-const compression=require('compression');
+//const compression=require('compression');
 const categoryRoutes=require('./route/categoryroutes');
 const globalerr=require('./controller/errcontrolles');
 const AppError=require('./utils/apperror');
@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(mongosanitize());
 app.use(xss());
 
-app.use(compression());
+//app.use(compression());
 
 app.use('/', viewroutes);
 app.use('/category', categoryRoutes);
