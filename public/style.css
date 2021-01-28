@@ -77,6 +77,14 @@ header .row{
     border: 2px solid #ccc;
     padding: 10px
 }
+.email-form{
+    border: 2px solid #ccc;
+    padding: 10px
+}
+.password-reset-form{
+    border: 2px solid #ccc;
+    padding: 10px
+}
 .login-main-form{
     position: absolute;
     top: 50%;

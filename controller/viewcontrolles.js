@@ -95,3 +95,12 @@ exports.viewallcomments=catchasync(async (req,res,next) =>{
     return next();
 });
 
+exports.forgotpassword=catchasync(async (req, res, next) => {
+    res.status(200).render('forgotpassword');
+    return next();
+})
+exports.resetpassword=catchasync(async (req, res, next) => {
+    res.status(200).render('passwordreset');
+    return next();
+})
+

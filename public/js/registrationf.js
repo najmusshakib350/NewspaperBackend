@@ -8,7 +8,10 @@ export const registrationf= async (data) =>{
             data
         });
         if(res.data.status==='success'){
-            window.location.href="/newsbd/loginme";
+            document.querySelector('.registration').insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Registration successfully</p>');
+            setTimeout(() => {
+                window.location.href="/newsbd/loginme";
+            }, (2000));  
         }
 
     }catch(err){

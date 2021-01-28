@@ -64,7 +64,6 @@ module.exports= class Email{
   // Send the actual email end
 
   async sendWelcome() {
-    console.log("Hellow i am najmus shakib");
     await this.send('welcome', 'Welcome to the Newsbd Family!');
   }
 

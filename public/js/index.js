@@ -10,8 +10,10 @@ import { commentdelf } from './commentdelf';
 import { userdelf } from './userdelf';
 import { registrationf } from './registrationf';
 import { loginf } from './loginf';
+import { forgotpasswordf } from './forgotpasswordf';
 import { logoutf } from './logoutf';
 import { updateuserf } from './updateuserf';
+import { passwordresetf } from './passwordresetf';
 
 const categoryaddform= document.querySelector('.add-cat-form');
 const categoryupdform= document.querySelector('.upd-cat-form');
@@ -24,6 +26,8 @@ const postupdate= document.querySelector('.postupdate');
 const postupdateform= document.querySelector('.postupdateform');
 const registration= document.querySelector('.registration');
 const login_form= document.querySelector('.login-form');
+const email_form= document.querySelector('.email-form');
+const password_reset_form= document.querySelector('.password-reset-form');
 const logout= document.querySelector('.logout');
 const updateuser= document.querySelector('.updateuser');
 
@@ -61,6 +65,18 @@ if(login_form){
         loginf(email,password);
     })
 }
+if(email_form){
+    email_form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const email=document.getElementById('liginid1').value;
+        //forgotpasswordf(email);
+        if(forgotpasswordf(email)){
+            document.querySelector('.passwordforgot').value=" ";
+            const paragraphf=`<p class="text-center" style="color:#fff">Please check your email</p>`;
+            document.querySelector('.email-form').insertAdjacentHTML('afterbegin', paragraphf);
+        }
+    })
+}
 
 if(registration){
     registration.addEventListener('submit', e=>{
@@ -74,10 +90,27 @@ if(registration){
         form.append('address', document.getElementById('useradd6').value);
         form.append('userrole', document.getElementById('useradd7').value);
         form.append('profilepicture', document.getElementById('useradd8').files[0]);
-        registrationf(form);
+        if( registrationf(form)){
+            if(document.getElementById('useradd3').value==="" || document.getElementById('useradd4').value===""){
+                registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Please provide password and confirmpassword</p>');
+            }
+            else if(document.getElementById('useradd3').value != document.getElementById('useradd4').value){
+                registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Password and Confirmpassword value is not same</p>');
+            }
+        }
+
     })
 }
 
+if(password_reset_form){
+    password_reset_form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const token=document.getElementById('useradd2').value;
+        const password=document.getElementById('useradd3').value;
+        const confirmPassword=document.getElementById('useradd4').value
+        passwordresetf(token,password,confirmPassword);
+    })
+}
 
 
 if(postupdateform){

@@ -159,6 +159,55 @@ exports.restrictTo= (...roles) =>{
 };
 
 
+exports.forgotPassword = catchAsync( async (req,res,next)=>{
+    //1) Get user based on Posted Email
+    const user= await User.findOne({ email: req.body.email });
+
+    if(!user){
+        return next( new AppError('There is no user with email address', 404) );
+    }
+    //2)Generat the random reset token
+    const resetToken= user.creatPasswordResetToken();
+
+    await user.save({validateBeforeSave: false});
+    //3) Send it to user's email
+  try{
+    const resetURL=`${req.protocol}://${req.get('host')}/resetPassword/${resetToken}`;
+    await new Email(user, resetURL).sendPasswordReset();
+    res.status(200).json({
+        status:'succes',
+        message:'Token sent to email',
+    });
+  }catch(err){
+      user.passwordResetToken=undefined;
+      user.passwordResetExpires=undefined;
+      await user.save({validateBeforeSave: false});
+
+      return next(new AppError('There was an error sending the email. Try again later', 500));
+  }
+});
+
+exports.resetPassword= catchAsync( async (req,res,next)=>{
+    //Get user based on the token
+    const hashedToken=crypto.createHash('sha256').update(req.params.password).digest('hex');
+    console.log(hashedToken);
+    const user = await User.findOne({
+        passwordResetToken:hashedToken,
+        passwordResetExpires: {$gt: Date.now()}
+    });
+    //if token has not expired, and there is user, set the new password
+    if(!user){
+        return next(new AppError('Token is invalid or has expired', 400));
+    }
+
+    user.password=req.body.password;
+    user.confirmPassword=req.body.confirmPassword;
+    user.passwordResetToken=undefined;
+    user.passwordResetExpires=undefined;
+    await user.save();
+    createSendToken(user,200,res);
+});
+
   
 
 

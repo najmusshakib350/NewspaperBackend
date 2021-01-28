@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 
 const limiter=ratelimit({
-    max:50,
+    max:100,
     windowMs:60*60*1000,
     message:"Too many requests from this ip, Please try again in an hour...!"
 });

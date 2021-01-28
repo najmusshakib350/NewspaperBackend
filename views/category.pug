@@ -40,22 +40,7 @@ block content
                                 td=`${el.catname}`
                                 td=`${el.parentstatus}`
                                 td 
-                                  a.text-white.px-1.updatecatid(href=`/updatecategory/${el._id}` data-updatecat=`${el._id}`) Upd
-                                  a.text-white.px-1(href=`/viewcategory?delid=${el._id}`) Del
-               
-                
-                //- button.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal')
-                //-   | Launch demo modal
-                
-                //- #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
-                //-     .modal-dialog
-                //-         .modal-content
-                //-         .modal-header
-                //-             h5#exampleModalLabel.modal-title.text-white Modal title
-                //-             button.btn-close.text-white(type='button' data-bs-dismiss='modal' aria-label='Close')
-                //-         .modal-body
-                //-             h6.text-white do you want to delete this item..?
-                //-         .modal-footer
-                //-             button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                //-             div.catitemdel(data-catid=`${delcatid}`)
-                //-               button.btn.btn-primary(type='button' data-catid=`${delcatid}`) Delete
+                                  a.text-white.px-1.updatecatid(href=`/updatecategory/${el._id}` data-updatecat=`${el._id}`)
+                                    i.fas.fa-pen-square.fs-2
+                                  a.text-white.px-1(href=`/viewcategory?delid=${el._id}`)
+                                    i.fas.fa-trash.fs-2

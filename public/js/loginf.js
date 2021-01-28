@@ -11,10 +11,14 @@ export const loginf= async (email, password) =>{
             }
         });
         if(res.data.status==='success'){
-            window.location.href="/";
+            document.querySelector('.login-form').insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff">Login successfully</p>')
+            setTimeout(() => {
+                window.location.href="/";
+            }, (2000));
         }
 
     }catch(err){
         //alert("This error for loginf");
+        document.querySelector('.login-form').insertAdjacentHTML('afterbegin', '<p style="color:#fff">Incorrect email or password</p>')
     }
 }

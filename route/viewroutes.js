@@ -15,6 +15,8 @@ router.route('/updateuserdata/:id').get(authControllers.protect,authControllers.
 router.route('/allcomments').get(authControllers.protect,viewcontrolles.viewallcomments);
 
 router.route('/newsbd/userregistration').get(viewcontrolles.userregistration);
+router.route('/forgotpassword').get(viewcontrolles.forgotpassword);
+router.route('/resetPassword/:password').get(viewcontrolles.resetpassword);
 
 
 module.exports=router;

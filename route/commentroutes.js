@@ -7,5 +7,5 @@ const router=express.Router();
 
 router.route('/add').post(categorycontrolles.postcomments);
 router.route('/viewallcomments').get(categorycontrolles.getallcomments);
-router.route('/delete/:id').delete(authControllers.restrictTo('Admin'),categorycontrolles.commentdelete);
+router.route('/delete/:id').delete(authControllers.protect,authControllers.restrictTo('Admin'),categorycontrolles.commentdelete);
 module.exports=router;

@@ -20,7 +20,7 @@ block content
         tbody
             each el,i in postall
                 tr
-                    th 1
+                    th=`${i+1}`
                     td
                       img.thumimg(src=`/image/postthumnail/${el.thumbnail}` alt='Poor connection')
                     td=`${el.post_title}`
@@ -28,6 +28,8 @@ block content
                     td=`${el.author_name}`
                     td=`${el.tags}`
                     td
-                        a.text-white.px-1(href=`/updatepost/${el._id}`) Upd
-                        a.text-white.px-1(href=`/viewallpost?delid=${el._id}`) Del
+                        a.text-white.px-1(href=`/updatepost/${el._id}`)
+                          i.fas.fa-pen-square.fs-2
+                        a.text-white.px-1(href=`/viewallpost?delid=${el._id}`)
+                          i.fas.fa-trash.fs-2
 

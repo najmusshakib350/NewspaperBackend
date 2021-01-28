@@ -10,7 +10,7 @@ router.route('/updateuser/:id').patch(authControllers.protect,authControllers.up
 router.route('/login').post(authControllers.login);
 router.route('/logout').get(authControllers.protect,authControllers.logout);
 // router.route('/updatepassword').patch(authControllers.protect,authControllers.updatePassword);
-// router.post('/forgotPassword', authControllers.forgotPassword)
-// router.patch('/resetPassword/:password', authControllers.resetPassword)
+router.post('/forgotPassword', authControllers.forgotPassword)
+router.patch('/resetPassword/:password', authControllers.resetPassword)
 
 module.exports=router;

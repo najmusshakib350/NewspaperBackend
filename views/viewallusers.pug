@@ -32,6 +32,8 @@ block content
                   td=`${el.userrole}`
                   td=`${el.userstatus}`
                   td
-                      a.text-white.px-1(href=`/updateuserdata/${el._id}`) Upd
-                      a.text-white.px-1(href=`/viewallusers?delid=${el._id}`) Del
+                      a.text-white.px-1(href=`/updateuserdata/${el._id}`)
+                        i.fas.fa-pen-square.fs-2
+                      a.text-white.px-1(href=`/viewallusers?delid=${el._id}`)
+                        i.fas.fa-trash.fs-2
 
