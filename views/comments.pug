@@ -18,12 +18,12 @@ block content
                         th(scope='col') User
                         th(scope='col') Action
                 tbody
-                    each el,i in commentsdata
-                      tr
-                        th=`${i+1}`
-                        td=`${el.comdesc}`
-                        td=`${el.categoryid.catname}`
-                        td=`${el.userid.name}`
-                        td
-                           a.text-white.px-1(href=`/allcomments?delid=${el._id}`)
-                            i.fas.fa-trash.fs-2
+                    each el,i in commentsdata 
+                        tr
+                            th=`${i+1}`
+                            td=`${el.comdesc}`
+                            td=`${el.categoryid.catname}`
+                            td=`${el.userid.name}`
+                            td
+                              a.text-white.px-1(href=`/allcomments?delid=${el._id}`)
+                                i.fas.fa-trash.fs-2

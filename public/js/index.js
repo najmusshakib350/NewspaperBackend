@@ -82,6 +82,8 @@ if(registration){
     registration.addEventListener('submit', e=>{
         e.preventDefault();
         const form=new FormData();
+        const passwordlength =document.getElementById('useradd3').value;
+
         form.append('name', document.getElementById('useradd1').value);
         form.append('email', document.getElementById('useradd2').value);
         form.append('password', document.getElementById('useradd3').value);
@@ -90,13 +92,19 @@ if(registration){
         form.append('address', document.getElementById('useradd6').value);
         form.append('userrole', document.getElementById('useradd7').value);
         form.append('profilepicture', document.getElementById('useradd8').files[0]);
-        if( registrationf(form)){
-            if(document.getElementById('useradd3').value==="" || document.getElementById('useradd4').value===""){
-                registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Please provide password and confirmpassword</p>');
+        
+        if(passwordlength.length >= 6){
+            if( registrationf(form)){
+                if(document.getElementById('useradd3').value==="" || document.getElementById('useradd4').value===""){
+                    registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Please provide password and confirmpassword</p>');
+                }
+                else if(document.getElementById('useradd3').value != document.getElementById('useradd4').value){
+                    registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Password and Confirmpassword value is not same</p>');
+                }
             }
-            else if(document.getElementById('useradd3').value != document.getElementById('useradd4').value){
-                registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Password and Confirmpassword value is not same</p>');
-            }
+        }
+        else{
+            registration.insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Please provide minimum 6 digit password length</p>');
         }
 
     })

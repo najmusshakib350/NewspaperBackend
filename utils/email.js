@@ -3,11 +3,12 @@ const pug = require('pug');
 const htmlToText = require('html-to-text');
 
 module.exports= class Email{
-  constructor(user,url){
+  constructor(user,url,token){
     this.to=user.email;
     this.firstName = user.name.split(' ')[0];
     this.url=url;
     this.from=`${process.env.EMAIL_FROM}`;
+    this.token=token;
   }
 
 
@@ -45,6 +46,7 @@ module.exports= class Email{
       const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
         firstName: this.firstName,
         url: this.url,
+        token:this.token,
         subject
       });
 

@@ -9,9 +9,6 @@ const AppError=require('./../utils/apperror');
 const catchAsync=require('./../utils/catchasync');
 
 
-
-
-
 const multerStorage= multer.memoryStorage();
 
 const multerFilter= (req, file,cb) =>{
@@ -59,7 +56,7 @@ const createSendToken=(user,statusCode,res) =>{
     res.cookie('jwt', token,cookieOptions);
     user.password=undefined;
     res.status(statusCode).json({
-        status:'success',
+        status:'succes',
         token,
         data:{
             user
@@ -77,9 +74,9 @@ exports.signup=catchAsync(async (req,res,next) =>{
   }
   const newUser=await User.create(req.body);
   const url = `${req.protocol}://${req.get('host')}/loginme`;
-  await new Email(newUser, url).sendWelcome();
+  await new Email(newUser, url,"empty").sendWelcome();
   res.status(201).json({
-      status:"success",
+      status:"succes",
       data:{
           newUser
       }
@@ -116,7 +113,7 @@ exports.logout = async (req, res) => {
     httpOnly: true
   });
   res.status(200).json({ 
-      status: 'success' 
+      status: 'succes' 
   });
   return next();
 };
@@ -173,7 +170,7 @@ exports.forgotPassword = catchAsync( async (req,res,next)=>{
     //3) Send it to user's email
   try{
     const resetURL=`${req.protocol}://${req.get('host')}/resetPassword/${resetToken}`;
-    await new Email(user, resetURL).sendPasswordReset();
+    await new Email(user, resetURL,resetToken).sendPasswordReset();
     res.status(200).json({
         status:'succes',
         message:'Token sent to email',

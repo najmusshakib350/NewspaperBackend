@@ -7,7 +7,7 @@ export const updateuserf= async (data,id) =>{
             url:`/users/updateuser/${id}`,
             data
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewallusers";
         }
 

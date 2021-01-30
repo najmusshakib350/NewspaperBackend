@@ -1,5 +1,8 @@
 const Category =require('./../model/category');
+const Posts=require('./../model/posts');
+const Comments =require('./../model/comment');
 const catchasync=require('./../utils/catchasync');
+
 
 exports.categoryaddcontrolles=catchasync(async (req,res,next) =>{
     req.body.parentid='';
@@ -13,7 +16,7 @@ exports.categoryaddcontrolles=catchasync(async (req,res,next) =>{
     }
     const catdata=await Category.create(req.body);
     res.status(201).json({
-        status:"success",
+        status:"succes",
         catdata
     });
     return next();
@@ -22,7 +25,7 @@ exports.categoryaddcontrolles=catchasync(async (req,res,next) =>{
 exports.categoryfindallcontrolles=catchasync(async (req,res,next) =>{
     const catdata= await Category.find({});
     res.status(200).json({
-        status:"success",
+        status:"succes",
         catlength: catdata.length,
         catdata
     });
@@ -32,7 +35,7 @@ exports.categoryfindallcontrolles=catchasync(async (req,res,next) =>{
 exports.categoryfindonecontrolles =catchasync(async (req,res,next) =>{
     const catdata=await Category.findById(req.params.id);
     res.status(200).json({
-        status:"success",
+        status:"succes",
         catdata
     });
     return next();
@@ -40,7 +43,8 @@ exports.categoryfindonecontrolles =catchasync(async (req,res,next) =>{
 
 exports.categoryupdatecontrolles=catchasync(async (req,res,next) =>{
     const catchildupd=await Category.find({parentid:req.params.id});
-
+    
+    //child category update
     catchildupd.forEach(async el =>{
         el.parentstatus=req.body.catname;
         const catchildconupdate=await Category.findByIdAndUpdate(el._id, el,{
@@ -48,12 +52,18 @@ exports.categoryupdatecontrolles=catchasync(async (req,res,next) =>{
             runValidators:true
         });
     });
-
-   // console.log(catchildupd);
+    //parent category update
     req.body.catdat=new Date();
     const catdata = await Category.findByIdAndUpdate(req.params.id,req.body);
+    //Post Update
+    const postcatnameupd=await Posts.find({category_id:req.params.id});
+    postcatnameupd.forEach(async el => {
+        el.category_name=req.body.catname;
+        await Posts.findByIdAndUpdate(el._id, el);
+    });
+
     res.status(200).json({
-        status:"success",
+        status:"succes",
         catdata
     });
     return next();
@@ -61,13 +71,30 @@ exports.categoryupdatecontrolles=catchasync(async (req,res,next) =>{
 
 exports.categorydeletecontrolles =catchasync(async (req,res,next) =>{
     const catchilddel=await Category.find({parentid:req.params.id});
-
-    catchilddel.forEach(async el =>{
-        const catchildcondelete=await Category.findByIdAndDelete(el._id);
+    const postcatnamedel=await Posts.find({});
+    //child category delete
+    catchilddel.forEach(async el1 =>{
+        postcatnamedel.forEach(async el2 => {
+            if(el1.catname === el2.category_name){
+                await Posts.findByIdAndDelete(el2._id);
+            }
+        });
+        const catchildcondelete=await Category.findByIdAndDelete(el1._id);  
     });
+    //Comments delete 
+    const commentsdelete=await Comments.find({categoryid: req.params.id});
+    commentsdelete.forEach(async el => {
+        await Comments.findByIdAndDelete(el._id);
+    });
+    //parent category delete
     const catdata = await Category.findByIdAndDelete(req.params.id);
+    //Post delete
+     const postcatnamedelpar=await Posts.find({category_id:req.params.id});
+    postcatnamedelpar.forEach(async el => {
+        await Posts.findByIdAndDelete(el._id);
+    });
     res.status(200).json({
-        status:"success",
+        status:"succes",
         catdata
     });
     return next();

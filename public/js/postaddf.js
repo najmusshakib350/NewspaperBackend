@@ -7,7 +7,7 @@ export const postaddf= async (data) =>{
             url:'/post/add/',
             data
         });
-        if(res.data.status==='post success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewallpost";
         }
 

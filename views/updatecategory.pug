@@ -6,7 +6,7 @@ block content
                 form.px-2.upd-cat-form
                     .form-group.text-white
                         label(for='catupd1') Category Name
-                        input#catupd1.form-control(type='text' name='catname' required='' value=`${catdata.catname}`)
+                        input#catupd1.form-control(type='text' name='catname' value=`${catdata.catname}` required='')
                     .form-group.text-white
                         label(for='catupd2') Category Description
                         textarea#catupd2.form-control(rows='5' type='text' name='catdesc' required='')=`${catdata.catdes}`  

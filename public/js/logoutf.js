@@ -6,9 +6,9 @@ export const logoutf= async () =>{
             method:'GET',
             url:'/users/logout/'
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             location.reload(true);
-            window.location.href="/newsbd/loginme/";
+            window.location.href="/newsbd/";
         }
 
     }catch(err){

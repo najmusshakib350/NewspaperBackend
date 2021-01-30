@@ -6,7 +6,7 @@ export const userdelf= async (id) =>{
             method:'DELETE',
             url:`/users/delete/${id}`
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewallusers";
         }
 

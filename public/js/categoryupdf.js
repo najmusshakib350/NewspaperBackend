@@ -11,7 +11,7 @@ export const categoryupdf= async (catname, catdes,parentstatus,id) =>{
                 parentstatus 
             }
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewcategory";
         }
 

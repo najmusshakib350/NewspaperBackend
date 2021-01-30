@@ -11,7 +11,7 @@ export const categoryaddf= async (catname, catdes,parentstatus) =>{
                parentstatus 
             }
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewcategory";
         }
 

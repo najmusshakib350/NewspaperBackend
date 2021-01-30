@@ -6,7 +6,7 @@ export const  commentdelf= async (id) =>{
             method:'DELETE',
             url:`/comments/delete/${id}`
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/allcomments";
         }
 

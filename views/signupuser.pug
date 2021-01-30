@@ -5,32 +5,31 @@ block content
             .col-sm-12.col-md-6.col-lg-6.px-3
                 .form-group.text-white
                     label(for='useradd1') User Name
-                    input#useradd1.form-control(type='text')
+                    input#useradd1.form-control(type='text' required='')
                 .form-group.text-white
                     label(for='useradd2') User Email
-                    input#useradd2.form-control(type='email')
+                    input#useradd2.form-control(type='email' required='')
                 .form-group.text-white
                     label(for='useradd3') Password
-                    input#useradd3.form-control(type='password' placeholder='******')
+                    input#useradd3.form-control(type='password' placeholder='******' required='')
                 .form-group.text-white
                     label(for='useradd4') Retype Password
-                    input#useradd4.form-control(type='password' placeholder='******')
+                    input#useradd4.form-control(type='password' placeholder='******' required='')
             .col-sm-12.col-md-6.col-lg-6.px-3
                 .form-group.text-white
                     label(for='useradd5') Phone Number
-                    input#useradd5.form-control(type='text')
+                    input#useradd5.form-control(type='text' required='')
                 .form-group.text-white
                     label(for='useradd6') Address
-                    input#useradd6.form-control(type='text')
+                    input#useradd6.form-control(type='text' required='')
                 .form-group.text-white
                     label(for='useradd7') User Role
                     select#useradd7.form-control
                         option Please select a option 
                         option Admin
                         option Editor
-                        option User
                 .form-group.text-white
                     label(for='useradd8') Profile Picture
-                    input#useradd8.form-control(type='file' accept='image/*')
+                    input#useradd8.form-control(type='file' accept='image/*' required='')
                 .form-group.py-3
                     button.btn.btn-primary Register User

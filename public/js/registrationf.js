@@ -7,10 +7,10 @@ export const registrationf= async (data) =>{
             url:'/users/signup/',
             data
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             document.querySelector('.registration').insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff" style="text-align:center">Registration successfully</p>');
             setTimeout(() => {
-                window.location.href="/newsbd/loginme";
+                window.location.href="/newsbd/";
             }, (2000));  
         }
 

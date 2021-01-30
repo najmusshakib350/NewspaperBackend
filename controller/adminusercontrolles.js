@@ -2,8 +2,10 @@ const crypto=require('crypto');
 const { promisify } = require('util');
 const jwt=require('jsonwebtoken');
 const User=require("../model/usermodel");
+const Comments =require('./../model/comment');
 const AppError=require('./../utils/apperror');
 const catchAsync=require('./../utils/catchasync');
+const factory=require('./factorycontrolles');
 
 
 exports.adminuserupdate=catchAsync(async (req,res,next) =>{
@@ -15,24 +17,16 @@ exports.adminuserupdate=catchAsync(async (req,res,next) =>{
         new:true,
         runValidators:true
     });
-    console.log(updateUser);
     if(!updateUser){
         return next(new AppError("Invalid userid", 404));
     }
     res.status(200).json({
-        status:"success",
+        status:"succes",
         data:{
             updateUser
         }
     });
-
     return next();
   });
 
-exports.userdelete=catchAsync(async (req,res,next) =>{
-    const deleteuser=await User.findByIdAndDelete(req.params.id);
-    res.status(200).json({
-        status:"success"
-    })
-    return next();
-});
+exports.userdelete= factory.deleteOne(User, Comments);

@@ -1,4 +1,3 @@
-
 const senderrdev=(err,req,res) =>{
     res.status(err.statuscode).json({
        status:err.status,
@@ -9,8 +8,6 @@ const senderrdev=(err,req,res) =>{
     //     message:err.message
     //  });
 }
-
-
 const senderrprod=(err,req,res) =>{
     if(err.isoperational){
     //    res.status(err.statuscode).json({

@@ -40,7 +40,7 @@ const userSchema=new mongoose.Schema({
     },
     userrole:{
         type:String,
-        default:"user"
+        default:"Editor"
     },
     profilepicture:{
         type:String,

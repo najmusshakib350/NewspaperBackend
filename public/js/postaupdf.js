@@ -7,7 +7,7 @@ export const postaupdf= async (data,id) =>{
             url:`/post/update/${id}`,
             data
         });
-        if(res.data.status==='update success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewallpost";
         }
 

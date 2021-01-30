@@ -10,7 +10,7 @@ export const loginf= async (email, password) =>{
                 password
             }
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             document.querySelector('.login-form').insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff">Login successfully</p>')
             setTimeout(() => {
                 window.location.href="/";

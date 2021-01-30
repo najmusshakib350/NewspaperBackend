@@ -14,6 +14,6 @@ export const forgotpasswordf= async (email) =>{
         }
 
     }catch(err){
-        alert("This error for forgotpasswordf");
+        //alert("This error for forgotpasswordf");
     }
 }

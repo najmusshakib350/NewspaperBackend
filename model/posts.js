@@ -22,8 +22,8 @@ const postscreate = new mongoose.Schema({
             default:0,
         },
         author_id:{
-            type:Number,
-            default:0
+            type:String,
+            default:"0"
         },
         author_name:{
             type:String,

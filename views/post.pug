@@ -6,24 +6,24 @@ block content
                 .col-sm-12.col-md-6.col-lg-6.px-3
                     .form-group.text-white
                         label(for='post1') Title
-                        input#post1.form-control(type='text' name='title')
+                        input#post1.form-control(type='text' name='title' required='')
                     .form-group.text-white
                         label(for='post2') Category Name
-                        select#post2.form-control(name='postcatname')
+                        select#post2.form-control(name='postcatname' required='')
                             option Select a option
                             each el,i in catalldata
                               option=`${el.catname}`
                     .form-group.text-white
                         label(for='post3') Publisher Name
-                        input#post3.form-control(type='text' name='pubname')
+                        input#post3.form-control(type='text' name='pubname' required='')
                     .form-group.text-white
                         label(for='post4') Tags
-                        input#post4.form-control(type='text' name='tagsname')
+                        input#post4.form-control(type='text' name='tagsname' required='')
                     .form-group.text-white
                         label(for='post5') Post Thumbnail
-                        input#post5.form-control(type='file' name='posthumnail' accept='image/*')
+                        input#post5.form-control(type='file' name='posthumnail' accept='image/*' required='')
                 .col-sm-12.col-md-6.col-lg-6.px-3
                     .form-group.text-white.my-4
-                        textarea#post6.form-control(rows='10' name='postdesc')
+                        textarea#post6.form-control(rows='10' name='postdesc' required='')
                     .form-group.py-3
                         button.btn.btn-primary Add Post         

@@ -6,7 +6,7 @@ export const categorydelf= async (id) =>{
             method:'DELETE',
             url:`/category/delete/${id}`
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewcategory";
         }
 

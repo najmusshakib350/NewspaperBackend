@@ -10,10 +10,10 @@ export const passwordresetf= async (token,password, confirmPassword) =>{
                 confirmPassword
             }
         });
-        if(res.data.status==='success'){
+        if(res.data.status==='succes'){
             document.querySelector('.password-reset-form').insertAdjacentHTML('afterbegin', '<p class="text-center" style="color:#fff">Password reset successfully</p>')
             setTimeout(() => {
-                window.location.href="/newsbd/loginme/";
+                window.location.href="/newsbd/";
             }, (2000));
         }
 

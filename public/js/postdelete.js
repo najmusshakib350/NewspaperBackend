@@ -6,7 +6,7 @@ export const postdelf= async (id) =>{
             method:'DELETE',
             url:`/post/delete/${id}`
         });
-        if(res.data.status==='delete success'){
+        if(res.data.status==='succes'){
             window.location.href="/viewallpost";
         }
 
