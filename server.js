@@ -12,7 +12,7 @@ mongoose.connect(DB, {
     useCreateIndex:true,
     useFindAndModify:true
 }).then(() =>{
-    //console.log("connection is succesfully..");
+    console.log("connection is succesfully..");
 }).catch((err) =>{
     //console.log("Database connection is unsuccesfully..");
 })
@@ -22,7 +22,7 @@ const app=require('./app');
 const port=process.env.PORT;
 
 app.listen(port, ()=>{
-    //console.log("This port number is ", port);
+    console.log("This port number is ", port);
 });
 
 

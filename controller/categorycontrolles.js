@@ -1,6 +1,5 @@
 const Category =require('./../model/category');
 const Posts=require('./../model/posts');
-const Comments =require('./../model/comment');
 const catchasync=require('./../utils/catchasync');
 
 
@@ -40,6 +39,7 @@ exports.categoryfindonecontrolles =catchasync(async (req,res,next) =>{
     });
     return next();
 })
+
 
 exports.categoryupdatecontrolles=catchasync(async (req,res,next) =>{
     const catchildupd=await Category.find({parentid:req.params.id});
@@ -81,11 +81,7 @@ exports.categorydeletecontrolles =catchasync(async (req,res,next) =>{
         });
         const catchildcondelete=await Category.findByIdAndDelete(el1._id);  
     });
-    //Comments delete 
-    const commentsdelete=await Comments.find({categoryid: req.params.id});
-    commentsdelete.forEach(async el => {
-        await Comments.findByIdAndDelete(el._id);
-    });
+
     //parent category delete
     const catdata = await Category.findByIdAndDelete(req.params.id);
     //Post delete
@@ -99,3 +95,14 @@ exports.categorydeletecontrolles =catchasync(async (req,res,next) =>{
     });
     return next();
 })
+
+exports.findoutcatname=catchasync(async (req,res,next) => {
+    req.params.id=req.params.id.charAt(0).toUpperCase()+req.params.id.slice(1);
+    const onecat= await Category.find({catname:req.params.id});
+    res.status(200).json({
+        status:"succes",
+        onecat
+ 
+    });
+    return next();
+});

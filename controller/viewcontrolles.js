@@ -2,7 +2,7 @@ const axios=require('axios');
 const Category =require('./../model/category');
 const Posts=require('./../model/posts');
 const User=require("../model/usermodel");
-const Comments=require("../model/comment");
+const Usercomments=require("../model/usercomments");
 
 const catchasync=require('./../utils/catchasync');
 const { protect } = require('./authcontrolles');
@@ -87,7 +87,7 @@ exports.updateuserdata=catchasync(async (req,res,next) =>{
 
 exports.viewallcomments=catchasync(async (req,res,next) =>{
     const delcommid= req.query.delid || '';
-    const commentsdata= await Comments.find({});
+    const commentsdata= await Usercomments.find({});
     res.status(200).render('comments',{
         commentsdata,
         delcommid

@@ -1,8 +1,4 @@
-const crypto=require('crypto');
-const { promisify } = require('util');
-const jwt=require('jsonwebtoken');
 const User=require("../model/usermodel");
-const Comments =require('./../model/comment');
 const AppError=require('./../utils/apperror');
 const catchAsync=require('./../utils/catchasync');
 const factory=require('./factorycontrolles');
@@ -29,4 +25,4 @@ exports.adminuserupdate=catchAsync(async (req,res,next) =>{
     return next();
   });
 
-exports.userdelete= factory.deleteOne(User, Comments);
+exports.userdelete= factory.deleteOne(User);

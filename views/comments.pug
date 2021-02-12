@@ -21,9 +21,9 @@ block content
                     each el,i in commentsdata 
                         tr
                             th=`${i+1}`
+                            td=`${el.name}`
+                            td=`${el.email}`
                             td=`${el.comdesc}`
-                            td=`${el.categoryid.catname}`
-                            td=`${el.userid.name}`
                             td
                               a.text-white.px-1(href=`/allcomments?delid=${el._id}`)
                                 i.fas.fa-trash.fs-2

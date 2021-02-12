@@ -6,6 +6,8 @@ const Posts=require('./../model/posts');
 const Category =require('./../model/category');
 const factory=require('./factorycontrolles');
 
+
+
 exports.postadd= factory.addOne(Posts, Category);
 exports.postupdate=catchasync(async (req,res,next) =>{
     const objarr=await Category.find({catname:req.body.category_name});
@@ -49,3 +51,42 @@ exports.postthumnailimage=catchasync(async (req,res,next) =>{
     return next();
 });
 exports.postdelete= factory.deleteOne(Posts, "");
+
+exports.showallpost=catchasync(async (req,res,next) => {
+    const postall= await Posts.find({}).sort( { post_date: -1 } );
+    res.status(200).json({
+        status:"succes",
+        postall
+    });
+    return next();
+});
+
+exports.showscpost=catchasync(async (req,res,next) => {
+    const onepost= await Posts.find({category_id:req.params.id});
+    res.status(200).json({
+        status:"succes",
+        onepost
+    });
+    return next();
+});
+exports.showsonepost=catchasync(async (req,res,next) => {
+    const onepost= await Posts.findById(req.params.id);
+    res.status(200).json({
+        status:"succes",
+        onepost
+    });
+    return next();
+});
+
+exports.categoryfindonenamecontrolles =catchasync(async (req,res,next) =>{
+    const catdata=await Posts.find({category_name:req.params.id});
+    res.status(200).json({
+        status:"succes",
+        catdatalength:catdata.length,
+        catdata
+    });
+    return next();
+})
+
+
+
