@@ -48,7 +48,7 @@ app.use(function (req, res, next) {
     //https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
     //https://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
   
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
